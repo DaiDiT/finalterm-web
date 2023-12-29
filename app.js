@@ -162,6 +162,4 @@ app.use('/', (req, res) => {
     res.send('<h1>404 Not Found</h1>')
 })
 
-app.listen(port, () => {
-    console.log(`Mongo Contact App | listening at http://localhost:${port}`)
-})
+module.exports = app
