@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-6">
+    <h2>Form Tambah Data Contact</h2>
+    <% if (typeof errors != 'undefined') { %>
+      <div class="alert alert-danger" role="alert">
+        <ul>
+          <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+    <% } %>
+    <form method="post" action="/contact">
+      <div class="mb-2">
+        <label for="name" class="form-label">Nama</label>
+        <input type="text" class="form-control" id="name" name="name" required/>
+      </div>
+      <div class="mb-2">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required/>
+      </div>
+      <div class="mb-2">
+        <label for="phone" class="form-label">No HP</label>
+        <input type="text" class="form-control" id="phone" name="phone" required/>
+      </div>
+      <div class="mb-2">
+        <label for="birthdate" class="form-label">Tanggal Lahir</label>
+        <input type="date" class="form-control" id="birthdate" name="birthdate" value="-"/>
+      </div>
+      <div class="mb-2">
+        <label for="relation" class="form-label">Hubungan</label>
+        <select class="form-select" aria-label="Default select example" id="relation" name="relation">
+          <option value="Kenalan" selected>Kenalan</option>
+          <option value="Keluarga">Keluarga</option>
+          <option value="Pasangan">Pasangan</option>
+          <option value="Rekan Kerja">Rekan Kerja</option>
+          <option value="Sahabat">Sahabat</option>
+          <option value="Teman">Teman</option>
+        </select>
+      </div>
+      <div class="mb-2">
+        <label for="address" class="form-label">Alamat</label>
+        <input type="text" class="form-control" id="address" name="address"/>
+      </div>
+      <div class="mb-2">
+        <label for="note" class="form-label">Catatan Tambahan</label>
+        <input type="text" class="form-control" id="note" name="note"/>
+      </div>
+      <button type="submit" class="btn btn-primary mb-5">Tambah Data Contact</button>
+    </form>
+  </div>
+</div>

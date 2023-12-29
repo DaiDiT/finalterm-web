@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-6">
+    <h2>Form Ubah Data Contact</h2>
+    <% if (typeof errors != 'undefined') { %>
+      <div class="alert alert-danger" role="alert">
+        <ul>
+          <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+    <% } %>
+    <form method="post" action="/contact?_method=PUT">
+      <input type="hidden" name="_id" value="<%= contact._id %>">
+      <input type="hidden" name="oldName" value="<%= (contact.oldName) ? contact.oldName : contact.name %>">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nama</label>
+        <input type="text" class="form-control" id="name" name="name" value="<%= contact.name %>" required/>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" value="<%= contact.email %>" required/>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">No HP</label>
+        <input type="text" class="form-control" id="phone" name="phone" value="<%= contact.phone %>" required/>
+      </div>
+      <div class="mb-2">
+        <label for="birthdate" class="form-label">Tanggal Lahir</label>
+        <input type="date" class="form-control" id="birthdate" name="birthdate" value="<%= contact.birthdate %>"/>
+      </div>
+      <div class="mb-2">
+        <label for="relation" class="form-label">Hubungan</label>
+        <select class="form-select" aria-label="Default select example" id="relation" name="relation">
+          <option value="Kenalan" <%= (contact.relation === 'Kenalan') ? 'selected' : '' %>>Kenalan</option>
+          <option value="Keluarga" <%= (contact.relation === 'Keluarga') ? 'selected' : '' %>>Keluarga</option>
+          <option value="Pasangan" <%= (contact.relation === 'Pasangan') ? 'selected' : '' %>>Pasangan</option>
+          <option value="Rekan Kerja" <%= (contact.relation === 'Rekan Kerja') ? 'selected' : '' %>>Rekan Kerja</option>
+          <option value="Sahabat" <%= (contact.relation === 'Sahabat') ? 'selected' : '' %>>Sahabat</option>
+          <option value="Teman" <%= (contact.relation === 'Teman') ? 'selected' : '' %>>Teman</option>
+        </select>
+      </div>
+      <div class="mb-2">
+        <label for="address" class="form-label">Alamat</label>
+        <input type="text" class="form-control" id="address" name="address" value="<%= contact.address %>"/>
+      </div>
+      <div class="mb-2">
+        <label for="note" class="form-label">Catatan Tambahan</label>
+        <input type="text" class="form-control" id="note" name="note" value="<%= contact.note %>"/>
+      </div>
+      <button type="submit" class="btn btn-primary mb-5">Ubah Data Contact</button>
+    </form>
+  </div>
+</div>
