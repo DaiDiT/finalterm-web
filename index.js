@@ -4,7 +4,6 @@ const expressLayouts = require('express-ejs-layouts')
 const { body, validationResult, check } = require('express-validator')
 const methodOverride = require('method-override')
 
-const http = require('http')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
@@ -14,7 +13,6 @@ const Contact = require('./model/contact')
 
 const app = express()
 const port = 3000
-
 
 
 app.use(methodOverride('_method'))
@@ -35,9 +33,8 @@ app.use(
 )
 
 app.use(flash())
-//Halaman home
 
-const server = http.createServer(app)
+//Halaman home
 
 app.get('/', async (req, res) => {
     const contacts = await Contact.find()
@@ -168,6 +165,8 @@ app.use('/', (req, res) => {
 })
 
 
-server.listen(port, () => {
+app.listen(port, () => {
     console.log(`Server is listening on port ${port}`)
 })
+
+module.exports = app
