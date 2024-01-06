@@ -17,10 +17,10 @@ const port = 3000
 
 app.use(methodOverride('_method'))
 
-app.set('views', './views');
+app.set("views", __dirname + "/views");
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
-app.use(express.static('public'))
+app.use(express.static(__dirname + 'public'))
 app.use(express.urlencoded({ extended: true }))
 
 app.use(cookieParser('secret'))
@@ -39,8 +39,8 @@ app.use(flash())
 
 app.get('/', async (req, res) => {
     const contacts = await Contact.find()
-    res.render('views/contact', {
-        layout : 'views/layouts/main',
+    res.render('contact', {
+        layout : 'layouts/main',
         title : 'Contact App',
         contacts,
         msg: req.flash('msg')
