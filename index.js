@@ -17,6 +17,7 @@ const port = 3000
 
 app.use(methodOverride('_method'))
 
+app.set('views', './views');
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
 app.use(express.static('public'))
@@ -38,8 +39,8 @@ app.use(flash())
 
 app.get('/', async (req, res) => {
     const contacts = await Contact.find()
-    res.render('contact', {
-        layout : 'layouts/main',
+    res.render('views/contact', {
+        layout : 'views/layouts/main',
         title : 'Contact App',
         contacts,
         msg: req.flash('msg')
